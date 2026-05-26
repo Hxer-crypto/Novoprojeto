@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Avisos</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body{
+      background-color: #f4f4f4;
+    }
+
+    .navbar-brand{
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .topo{
+      background: linear-gradient(135deg, #198754, #157347);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .card{
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .card:hover{
+      transform: scale(1.01);
+    }
+
+    footer{
+      margin-top: 50px;
+      padding: 20px;
+      background: #198754;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+  <a class="navbar-brand" href="/">⚽ Meu Time</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/jogadores/">Jogadores</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/treinos/">Treinos</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/presencas/">Presenças</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/partidas/">Partidas</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/mensalidades/">Mensalidades</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/avisos/">Avisos</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/admin/">Admin</a>
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>
+
+<!-- CONTEÚDO -->
+
+<div class="container mt-5">
+
+  <div class="topo text-center">
+
+    <h1>📢 Avisos do Time</h1>
+
+    <p>
+      Comunicados importantes para todos os jogadores
+    </p>
+
+  </div>
+
+  {% for aviso in avisos %}
+
+  <div class="card mb-4 shadow {% if aviso.importante %}border-danger{% else %}border-info{% endif %}">
+
+    <div class="card-header {% if aviso.importante %}bg-danger text-white{% else %}bg-info text-white{% endif %}">
+
+      <strong>{{ aviso.titulo }}</strong>
+
+      {% if aviso.importante %}
+      <span class="badge badge-light ml-2">
+        ⚠ Importante
+      </span>
+      {% endif %}
+
+    </div>
+
+    <div class="card-body">
+
+      <p class="card-text">
+        {{ aviso.mensagem }}
+      </p>
+
+      <small class="text-muted">
+        Publicado em:
+        {{ aviso.data_publicacao }}
+      </small>
+
+    </div>
+
+  </div>
+
+  {% empty %}
+
+  <div class="alert alert-warning">
+
+    Nenhum aviso publicado.
+
+  </div>
+
+  {% endfor %}
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <h5>⚽ Gerenciador de Times</h5>
+
+  <p>
+    Sistema desenvolvido para organização de futebol amador
+  </p>
+
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
