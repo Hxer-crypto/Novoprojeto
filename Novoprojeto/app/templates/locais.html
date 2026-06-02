@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Locais</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+
+<h2>📍 Locais</h2>
+
+<div class="row">
+
+{% for local in locais %}
+
+<div class="col-md-4">
+
+<div class="card shadow mb-4">
+
+<div class="card-body">
+
+<h5>{{ local.nome }}</h5>
+
+<p>{{ local.endereco }}</p>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</body>
+</html>

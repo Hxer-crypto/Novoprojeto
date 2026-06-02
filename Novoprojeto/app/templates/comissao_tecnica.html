@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Comissão Técnica</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+<h2>👨‍🏫 Comissão Técnica</h2>
+
+<table class="table table-striped mt-4">
+
+<thead class="thead-dark">
+
+<tr>
+<th>Nome</th>
+<th>Cargo</th>
+<th>Telefone</th>
+<th>Email</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for membro in membros %}
+
+<tr>
+
+<td>{{ membro.nome }}</td>
+<td>{{ membro.cargo }}</td>
+<td>{{ membro.telefone }}</td>
+<td>{{ membro.email }}</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="4">
+
+Nenhum membro cadastrado.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

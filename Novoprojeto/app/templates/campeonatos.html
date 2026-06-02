@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Campeonatos</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+
+<h2>🏆 Campeonatos</h2>
+
+<table class="table table-bordered">
+
+<thead class="thead-dark">
+<tr>
+<th>Nome</th>
+<th>Organizador</th>
+<th>Início</th>
+<th>Fim</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for campeonato in campeonatos %}
+<tr>
+<td>{{ campeonato.nome }}</td>
+<td>{{ campeonato.organizador }}</td>
+<td>{{ campeonato.data_inicio }}</td>
+<td>{{ campeonato.data_fim }}</td>
+</tr>
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>
