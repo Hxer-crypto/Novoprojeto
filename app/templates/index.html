@@ -1,239 +1,392 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerenciador de Time</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<title>Gerenciador de Times</title>
 
-  <style>
-    body{
-      background-color: #f4f4f4;
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:linear-gradient(135deg,#ffffff,#fff6d5);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+.navbar{
+    background:linear-gradient(90deg,#d62828,#fcbf49)!important;
+}
+
+.navbar-brand{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.jumbotron{
+    background:linear-gradient(135deg,#d62828,#fcbf49);
+    color:white;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    animation:fadeDown 1s ease;
+}
+
+.card-menu{
+    border:none;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.card-menu:hover{
+    transform:translateY(-10px) scale(1.04);
+    box-shadow:0 12px 25px rgba(0,0,0,.25);
+}
+
+.card-aviso{
+    border-radius:15px;
+    transition:.3s;
+}
+
+.card-aviso:hover{
+    transform:scale(1.02);
+}
+
+.btn-custom-red{
+    background:#d62828;
+    color:white;
+    border:none;
+    border-radius:30px;
+}
+
+.btn-custom-red:hover{
+    background:#b71c1c;
+    color:white;
+}
+
+.btn-custom-yellow{
+    background:#fcbf49;
+    color:black;
+    border:none;
+    border-radius:30px;
+}
+
+.btn-custom-yellow:hover{
+    background:#f4a300;
+}
+
+footer{
+    margin-top:60px;
+    background:linear-gradient(90deg,#d62828,#fcbf49);
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+.bola{
+    position:fixed;
+    font-size:25px;
+    z-index:1;
+    animation:cair linear infinite;
+    pointer-events:none;
+}
+
+.conteudo{
+    position:relative;
+    z-index:2;
+}
+
+@keyframes cair{
+    from{
+        transform:translateY(-120px);
     }
-
-    .jumbotron{
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    to{
+        transform:translateY(120vh);
     }
+}
 
-    .card-aviso{
-      border-radius: 10px;
-      transition: 0.3s;
+@keyframes fadeDown{
+    from{
+        opacity:0;
+        transform:translateY(-30px);
     }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-    .card-aviso:hover{
-      transform: scale(1.02);
-    }
-
-    footer{
-      margin-top: 60px;
-      padding: 20px;
-      background: #198754;
-      color: white;
-      text-align: center;
-    }
-
-    .navbar-brand{
-      font-weight: bold;
-      font-size: 24px;
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<div class="bola" style="left:5%;animation-duration:10s;">⚽</div>
+<div class="bola" style="left:15%;animation-duration:14s;">⚽</div>
+<div class="bola" style="left:25%;animation-duration:11s;">⚽</div>
+<div class="bola" style="left:35%;animation-duration:16s;">⚽</div>
+<div class="bola" style="left:45%;animation-duration:12s;">⚽</div>
+<div class="bola" style="left:55%;animation-duration:9s;">⚽</div>
+<div class="bola" style="left:65%;animation-duration:15s;">⚽</div>
+<div class="bola" style="left:75%;animation-duration:10s;">⚽</div>
+<div class="bola" style="left:85%;animation-duration:13s;">⚽</div>
+<div class="bola" style="left:95%;animation-duration:11s;">⚽</div>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-  <a class="navbar-brand" href="/">⚽ Meu Time</a>
+<nav class="navbar navbar-expand-lg navbar-dark">
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<a class="navbar-brand" href="/">
+⚽ Meu Time
+</a>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
 
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/">Home</a>
-      </li>
+<div class="collapse navbar-collapse" id="navbarNav">
 
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/jogadores/">Jogadores</a>
-      </li>
+<ul class="navbar-nav">
 
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/treinos/">Treinos</a>
-      </li>
+<li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/jogadores/">Jogadores</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/treinos/">Treinos</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/presencas/">Presenças</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/partidas/">Partidas</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/mensalidades/">Mensalidades</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/avisos/">Avisos</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/comissao/">Comissão Técnica</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/campeonatos/">Campeonatos</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/locais/">Locais</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/estatisticas/">Estatísticas</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/escalacoes/">Escalações</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/patrocinadores/">Patrocinadores</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/calendario/">Calendário</a></li>
+<li class="nav-item"><a class="nav-link text-white" href="/admin/">Admin</a></li>
 
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/presencas/">Presenças</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/partidas/">Partidas</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/mensalidades/">Mensalidades</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/avisos/">Avisos</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link text-white" href="/admin/">Admin</a>
-      </li>
-
-    </ul>
-  </div>
-</nav>
-
-<!-- CONTEÚDO -->
-
-<div class="container mt-5">
-
-  <!-- HEADER -->
-  <div class="jumbotron text-center bg-success text-white">
-
-    <h1 class="display-4">⚽ Gerenciador de Times</h1>
-
-    <p class="lead">
-      Organize seu time de futebol amador com facilidade
-    </p>
-
-    <hr class="bg-white">
-
-    <h4>
-      Jogadores ativos:
-      <strong>{{ total_jogadores }}</strong>
-    </h4>
-
-    {% if proxima_partida %}
-      <p class="mt-3">
-        Próxima partida:
-        <strong>
-          {{ proxima_partida.adversario }}
-        </strong>
-        —
-        {{ proxima_partida.data }}
-      </p>
-    {% endif %}
-
-  </div>
-
-  <!-- CARDS -->
-  <div class="row text-center">
-
-    <div class="col-md-3 mb-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h3>👕</h3>
-          <h5>Jogadores</h5>
-          <a href="/jogadores/" class="btn btn-success mt-2">
-            Ver jogadores
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 mb-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h3>🏃</h3>
-          <h5>Treinos</h5>
-          <a href="/treinos/" class="btn btn-success mt-2">
-            Ver treinos
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 mb-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h3>🏆</h3>
-          <h5>Partidas</h5>
-          <a href="/partidas/" class="btn btn-success mt-2">
-            Ver partidas
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 mb-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h3>💰</h3>
-          <h5>Mensalidades</h5>
-          <a href="/mensalidades/" class="btn btn-success mt-2">
-            Ver mensalidades
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- AVISOS -->
-  <h3 class="mt-5 mb-4">📢 Últimos Avisos</h3>
-
-  {% for aviso in avisos %}
-
-  <div class="card mb-3 card-aviso {% if aviso.importante %}border-danger{% else %}border-info{% endif %}">
-
-    <div class="card-header {% if aviso.importante %}bg-danger text-white{% else %}bg-info text-white{% endif %}">
-
-      <strong>{{ aviso.titulo }}</strong>
-
-      {% if aviso.importante %}
-        <span class="badge badge-light ml-2">
-          ⚠ Importante
-        </span>
-      {% endif %}
-
-    </div>
-
-    <div class="card-body">
-
-      <p class="card-text">
-        {{ aviso.mensagem }}
-      </p>
-
-      <small class="text-muted">
-        Publicado em:
-        {{ aviso.data_publicacao }}
-      </small>
-
-    </div>
-
-  </div>
-
-  {% empty %}
-
-  <div class="alert alert-warning">
-    Nenhum aviso no momento.
-  </div>
-
-  {% endfor %}
+</ul>
 
 </div>
 
-<!-- FOOTER -->
+</nav>
+
+<div class="container mt-5 conteudo">
+
+<div class="jumbotron text-center">
+
+<h1 class="display-4">⚽ Gerenciador de Times</h1>
+
+<p class="lead">
+Organize seu time de futebol amador de forma simples e eficiente.
+</p>
+
+<hr class="bg-white">
+
+<h4>
+Jogadores ativos:
+<strong>{{ total_jogadores }}</strong>
+</h4>
+
+{% if proxima_partida %}
+<p class="mt-3">
+Próxima partida:
+<strong>{{ proxima_partida.adversario }}</strong>
+—
+{{ proxima_partida.data }}
+</p>
+{% endif %}
+
+</div>
+
+<div class="row text-center">
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>👕</h2>
+<h5>Jogadores</h5>
+<a href="/jogadores/" class="btn btn-custom-red mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>🏃</h2>
+<h5>Treinos</h5>
+<a href="/treinos/" class="btn btn-custom-yellow mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>📋</h2>
+<h5>Presenças</h5>
+<a href="/presencas/" class="btn btn-custom-red mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>🏆</h2>
+<h5>Partidas</h5>
+<a href="/partidas/" class="btn btn-custom-yellow mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>💰</h2>
+<h5>Mensalidades</h5>
+<a href="/mensalidades/" class="btn btn-custom-red mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>📢</h2>
+<h5>Avisos</h5>
+<a href="/avisos/" class="btn btn-custom-yellow mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>👨‍🏫</h2>
+<h5>Comissão Técnica</h5>
+<a href="/comissao/" class="btn btn-custom-red mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>🏅</h2>
+<h5>Campeonatos</h5>
+<a href="/campeonatos/" class="btn btn-custom-yellow mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>📍</h2>
+<h5>Locais</h5>
+<a href="/locais/" class="btn btn-custom-red mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>📊</h2>
+<h5>Estatísticas</h5>
+<a href="/estatisticas/" class="btn btn-custom-yellow mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>📋</h2>
+<h5>Escalações</h5>
+<a href="/escalacoes/" class="btn btn-custom-red mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>🤝</h2>
+<h5>Patrocinadores</h5>
+<a href="/patrocinadores/" class="btn btn-custom-yellow mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 mb-4">
+<div class="card card-menu shadow">
+<div class="card-body">
+<h2>📅</h2>
+<h5>Calendário</h5>
+<a href="/calendario/" class="btn btn-custom-red mt-2">Abrir</a>
+</div>
+</div>
+</div>
+
+</div>
+
+<h3 class="mt-5 mb-4">📢 Últimos Avisos</h3>
+
+{% for aviso in avisos %}
+
+<div class="card card-aviso mb-3 {% if aviso.importante %}border-danger{% else %}border-warning{% endif %}">
+
+<div class="card-header {% if aviso.importante %}bg-danger text-white{% else %}bg-warning{% endif %}">
+<strong>{{ aviso.titulo }}</strong>
+
+{% if aviso.importante %}
+<span class="badge badge-light ml-2">
+⚠ Importante
+</span>
+{% endif %}
+</div>
+
+<div class="card-body">
+
+<p>{{ aviso.mensagem }}</p>
+
+<small class="text-muted">
+Publicado em {{ aviso.data_publicacao }}
+</small>
+
+</div>
+
+</div>
+
+{% empty %}
+
+<div class="alert alert-warning">
+Nenhum aviso cadastrado.
+</div>
+
+{% endfor %}
+
+</div>
 
 <footer>
-  <h5>⚽ Gerenciador de Times</h5>
-  <p>
-    Sistema desenvolvido para organização de futebol amador
-  </p>
+
+<h4>⚽ Gerenciador de Times</h4>
+
+<p>
+Sistema desenvolvido para organização de futebol amador.
+</p>
+
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>

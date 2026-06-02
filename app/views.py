@@ -69,3 +69,66 @@ class AvisosView(View):
         return render(request, 'avisos.html', {
             'avisos': avisos
         })
+
+
+class ComissaoTecnicaView(View):
+    def get(self, request, *args, **kwargs):
+        membros = ComissaoTecnica.objects.all()
+
+        return render(request, 'comissao_tecnica.html', {
+            'membros': membros
+        })
+
+
+class CampeonatosView(View):
+    def get(self, request, *args, **kwargs):
+        campeonatos = Campeonato.objects.all()
+
+        return render(request, 'campeonatos.html', {
+            'campeonatos': campeonatos
+        })
+
+
+class LocaisView(View):
+    def get(self, request, *args, **kwargs):
+        locais = Local.objects.all()
+
+        return render(request, 'locais.html', {
+            'locais': locais
+        })
+
+
+class EstatisticasView(View):
+    def get(self, request, *args, **kwargs):
+        estatisticas = EstatisticaJogador.objects.all()
+
+        return render(request, 'estatisticas.html', {
+            'estatisticas': estatisticas
+        })
+
+
+class EscalacoesView(View):
+    def get(self, request, *args, **kwargs):
+        escalacoes = Escalacao.objects.all()
+
+        return render(request, 'escalacoes.html', {
+            'escalacoes': escalacoes
+        })
+
+
+class PatrocinadoresView(View):
+    def get(self, request, *args, **kwargs):
+        patrocinadores = Patrocinador.objects.all()
+
+        return render(request, 'patrocinadores.html', {
+            'patrocinadores': patrocinadores
+        })
+
+
+class CalendarioView(View):
+    def get(self, request, *args, **kwargs):
+        eventos = EventoCalendario.objects.all()
+
+        return render(request, 'calendario.html', {
+            'eventos': eventos
+        })

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Estatísticas</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+
+<h2>📊 Estatísticas dos Jogadores</h2>
+
+<table class="table table-striped">
+
+<thead class="thead-dark">
+
+<tr>
+<th>Jogador</th>
+<th>Gols</th>
+<th>Assistências</th>
+<th>Amarelos</th>
+<th>Vermelhos</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for e in estatisticas %}
+
+<tr>
+
+<td>{{ e.jogador }}</td>
+<td>{{ e.gols }}</td>
+<td>{{ e.assistencias }}</td>
+<td>{{ e.cartoes_amarelos }}</td>
+<td>{{ e.cartoes_vermelhos }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

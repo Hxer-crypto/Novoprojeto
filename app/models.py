@@ -179,7 +179,9 @@ class Aviso(models.Model):
         verbose_name="Título"
     )
 
-    mensagem = models.TextField(verbose_name="Mensagem")
+    mensagem = models.TextField(
+        verbose_name="Mensagem"
+    )
 
     data_publicacao = models.DateField(
         auto_now_add=True,
@@ -197,3 +199,98 @@ class Aviso(models.Model):
     class Meta:
         verbose_name = "Aviso"
         verbose_name_plural = "Avisos"
+
+
+class ComissaoTecnica(models.Model):
+    nome = models.CharField(max_length=100)
+    cargo = models.CharField(max_length=50)
+    telefone = models.CharField(max_length=20, blank=True)
+    email = models.EmailField(blank=True)
+
+    class Meta:
+        verbose_name = "Comissão Técnica"
+        verbose_name_plural = "Comissões Técnicas"
+
+    def __str__(self):
+        return f"{self.nome} - {self.cargo}"
+
+
+class Campeonato(models.Model):
+    nome = models.CharField(max_length=100)
+    organizador = models.CharField(max_length=100)
+    data_inicio = models.DateField()
+    data_fim = models.DateField()
+
+    class Meta:
+        verbose_name = "Campeonato"
+        verbose_name_plural = "Campeonatos"
+
+    def __str__(self):
+        return self.nome
+
+
+class Local(models.Model):
+    nome = models.CharField(max_length=100)
+    endereco = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name = "Local"
+        verbose_name_plural = "Locais"
+
+    def __str__(self):
+        return self.nome
+
+
+class EstatisticaJogador(models.Model):
+    jogador = models.ForeignKey(Jogador, on_delete=models.CASCADE)
+    gols = models.IntegerField(default=0)
+    assistencias = models.IntegerField(default=0)
+    cartoes_amarelos = models.IntegerField(default=0)
+    cartoes_vermelhos = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name = "Estatística de Jogador"
+        verbose_name_plural = "Estatísticas de Jogadores"
+
+    def __str__(self):
+        return self.jogador.nome
+
+
+class Escalacao(models.Model):
+    partida = models.ForeignKey(Partida, on_delete=models.CASCADE)
+    jogador = models.ForeignKey(Jogador, on_delete=models.CASCADE)
+    titular = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Escalação"
+        verbose_name_plural = "Escalações"
+
+    def __str__(self):
+        return f"{self.partida} - {self.jogador}"
+
+
+class Patrocinador(models.Model):
+    nome = models.CharField(max_length=100)
+    empresa = models.CharField(max_length=100)
+    telefone = models.CharField(max_length=20, blank=True)
+    imagem = models.ImageField(upload_to='patrocinadores/', blank=True, null=True)
+
+    def __str__(self):
+        return self.nome
+
+    class Meta:
+        verbose_name = "Patrocinador"
+        verbose_name_plural = "Patrocinadores"
+
+
+class EventoCalendario(models.Model):
+    titulo = models.CharField(max_length=100)
+    data = models.DateField()
+    descricao = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = "Evento do Calendário"
+        verbose_name_plural = "Eventos do Calendário"
+
+    def __str__(self):
+        return self.titulo
